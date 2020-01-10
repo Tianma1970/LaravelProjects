@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/projects', 'ProjectController@index');
-Route::get('projects/{id}', 'Projectcontroller@show');
+Route::get('projects/{project}', 'Projectcontroller@show');//ändrat till project eftersom jag ändrade parameterna i Projectcontrollern
+
+Route::resource('/todos', 'TodoController');
