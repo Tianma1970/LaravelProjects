@@ -18,11 +18,12 @@ class ProjectController extends Controller
             ]);
         }
 
-        public function show($id){
-            $project = Project::findOrFail($id);
-
+        public function show(Project $project){//parameter som ersätter raden nedan (RessourceController)
+            //$project = Project::findOrFail($id);
+            $todos = $project->todos;
             return view('projects/show', [
-                'project'   => $project
+                'project'   => $project,
+                'todos'     => $todos
             ]);
         }
 }
