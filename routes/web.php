@@ -14,8 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/projects', 'ProjectController@index');
-Route::get('projects/{project}', 'Projectcontroller@show');//ändrat till project eftersom jag ändrade parameterna i Projectcontrollern
+//Route::get('/projects', 'ProjectController@index');
+//Route::get('projects/{project}', 'Projectcontroller@show');//ändrat till project eftersom jag ändrade parameterna i Projectcontrollern
+Route::resource('/projects', 'ProjectController');
 
 Route::resource('/todos', 'TodoController');
