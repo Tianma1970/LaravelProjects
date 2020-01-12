@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    public function todo(){
+    public function todos(){
         return $this->hasMany(Todo::class);
     }
 }
