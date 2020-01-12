@@ -12,6 +12,7 @@
         </li>
     @endforeach
     </ol>
+    <a href="/projects/create">Create a New Project</a>
 </div>
 
 @endsection
