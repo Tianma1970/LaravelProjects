@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-//Route::get('/projects', 'ProjectController@index');
-//Route::get('projects/{project}', 'Projectcontroller@show');//ändrat till project eftersom jag ändrade parameterna i Projectcontrollern
-Route::resource('/projects', 'ProjectController');
+Auth::routes();
 
-Route::resource('/todos', 'TodoController');
+Route::get('/', 'PageController@welcome');
+
+Route::middleware(['auth'])->group(function() {
+     Route::resource('/todos', 'TodoController');
+    Route::resource('/projects', 'ProjectController');
+    Route::get('/dashboard', 'DashboardController@index');
+
+});
+
+
+
+
