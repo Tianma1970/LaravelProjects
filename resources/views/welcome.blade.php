@@ -4,8 +4,10 @@
 
     <div class="container mt-4">
 
-        Welcome to my Project Manager
-
+        <h1><i>Welcome to Project Manager</i></h1>
+        <div class="jumbotron col-4 text-center">
+            <p>{{ $msg }}</p>
+        </div>
     </div><!--/container-->
 
 @endsection
