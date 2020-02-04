@@ -4,9 +4,10 @@
 
     <div class="container mt-4">
 
-        <h1><i>Welcome to Project Manager</i></h1>
-        <div class="jumbotron col-4 text-center">
-            <p>{{ $msg }}</p>
+        <h1 class="text-center"><i>Welcome</i></h1>
+        <div class="jumbotron col-4 text-center mt-5">
+            <p>{{ $msg }}<br>
+            <p><small>{{ $info }}</small></p>
         </div>
     </div><!--/container-->
 
