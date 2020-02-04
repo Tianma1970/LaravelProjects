@@ -3,14 +3,20 @@
 @section('content')
 
 <div class="container mt-3">
-    <h1>{{ $project->title }}</h1>
-    <p> {{ $project->description }}</p>
+    <div class="row">
+        <div class="jumbotron col-5">
+            <h1>{{ $project->title }}</h1>
+            <p> {{ $project->description }}</p>
 
-    <ol>
-        @foreach( $todos as $todo )
-            <li>{{ $todo->title }}</li>
-        @endforeach
-    </ol>
+            <ol>
+                @foreach( $todos as $todo )
+                    <li>{{ $todo->title }}<br>
+                        {{ $todo->description }}
+                    </li>
+                @endforeach
+            </ol>
+        </div>
+    </div>
     <div>
         <a href="/projects">&laquo; Back to all Projects</a>
     </div>
