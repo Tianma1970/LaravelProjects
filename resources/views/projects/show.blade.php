@@ -6,8 +6,8 @@
     <div class="row">
         <div class="jumbotron col-5">
             <h1>{{ $project->title }}</h1>
-            <p> {{ $project->description }}</p>
-
+            <p> {{ $project->description }}</p><br>
+            <small><i>created at {{ $project->created_at }}</i></small>
             <ol>
                 @foreach( $todos as $todo )
                     <li>{{ $todo->title }}<br>
