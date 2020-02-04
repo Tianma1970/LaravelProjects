@@ -10,7 +10,7 @@ class PageController extends Controller
     public function welcome() {
 
         $msg = "Log in and create some projects";
-        $info = "You are successfully logged out";
+        // $info = "You are successfully logged out";
 
         if(Auth::check()) {
             $user = Auth::user();
@@ -19,7 +19,7 @@ class PageController extends Controller
             return view('userWelcome', ['user' => $user]);
         }
         return view('welcome', ['msg' => $msg,
-                                'info' => $info
+                                // 'info' => $info
                                 ]);
     }
 }
