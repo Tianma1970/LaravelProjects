@@ -16,7 +16,7 @@
 
                     You are logged in!
 
-                    This is the Dahboard.
+                    This is the Dashboard.
                 </div>
             </div>
         </div>
