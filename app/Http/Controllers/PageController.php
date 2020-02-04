@@ -9,12 +9,14 @@ class PageController extends Controller
 {
     public function welcome() {
 
-        $msg = "Some message";
+        $msg = "Log in and create some projects";
+        $info = "You are successfully logged out";
 
         if(Auth::check()) {
             $user = Auth::user();
-            $msg = "You are logged in as {$user->name}";
-            $info = "You created your account at {$user->created_at}";
+            // $info = "You created your account at {$user->created_at}";
+            // $msg = "You are logged in as {$user->name}";
+            return view('userWelcome', ['user' => $user]);
         }
         return view('welcome', ['msg' => $msg,
                                 'info' => $info
