@@ -4,11 +4,10 @@
 
 <div class="container mt-3">
 
-    <h1>Create a new Task </h1>
+    <h1>Create a new Todo </h1>
 
     <form method="POST" action="/projects/{{ $project->id }}/todos">
 
-        @csrf
 
         <!--vi måste sätte en token av säkerhetsskäl annars kan formuläret inte skickas-->
         @csrf <!--står för cross-site rquest forgery-->
