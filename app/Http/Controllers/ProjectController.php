@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    /**
+     * Validation
+     */
+    protected $validationRules = [
+
+             'title'        => 'required|min:3',
+             'description'  => 'required|min:5',
+
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -41,13 +52,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //dump($request->has('title'));
+
+        $validData = $request->validate($this->validationRules);
+
         $project = New Project();
         $project->user_id = Auth::user()->id;
-        $project->title = $request->title;
-        $project->description = $request->description;
+        $project->title = $validData['title'];
+        $project->description = $validData['description'];
         $project->save();
-        return redirect('/projects/' . $project->id);
+        return redirect('/projects/' . $project->id)->with('status', 'Project created successfully');
     }
 
     /**
@@ -87,11 +100,13 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->title = $request->title;
-        $project->description = $request->description;
+        $validData = $request->validate($this->validationRules);
+
+        $project->title = $validData['title'];
+        $project->description = $validData['description'];
         $project->save();
 
-        return redirect("/projects/" . $project->id);
+        return redirect("/projects/" . $project->id)->with('status', 'Project edited successfully');
     }
 
     /**
@@ -105,7 +120,7 @@ class ProjectController extends Controller
         //dd("Delete me"); //för att testa
         $project->delete();
 
-        return redirect("/projects");
+        return redirect("/projects")->with('status', 'Project deleted successfully');
 
     }
 }

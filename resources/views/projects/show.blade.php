@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container mt-3">
+
+    @include('partials/status')
+
     <div class="row">
         <div class="jumbotron col-5">
             <h1>{{ $project->title }}</h1>

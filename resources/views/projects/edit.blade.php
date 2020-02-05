@@ -1,8 +1,8 @@
 @extends('layouts/app')
 
 @section('content')
-
 <div class="container mt-3">
+        @include('partials/error')
 
     <h1>Edit: {{ $project->title }}</h1>
 
@@ -13,11 +13,11 @@
         @method('PUT')
         <div class="form-group">
             <label for="title">Project Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Project Title" value="{{ $project->title }}">
+            <input type="text" name="title" class="form-control" placeholder="Project Title" required value="{{ old('title') ? old('title') : $project->title }}">
         </div>
         <div class="form-group">
             <label for="description">Project Description</label>
-            <input type="text" name="description" class="form-control" placeholder="Project Description" value="{{ $project->description }}">
+            <input type="text" name="description" class="form-control" placeholder="Project Description" required value="{{ old('description') ? old('description') : $project->description }}">
         </div>
         <div class="mt-3">
             <input  type="submit" value="Save" class="btn btn-secondary">

@@ -6,21 +6,25 @@
 
     <h1>Create a new Project</h1>
 
+    @include('partials/error')
+    @include('partials/status')
+
     <form method="POST" action="/projects">
 
         <!--vi måste sätte en token av säkerhetsskäl annars kan formuläret inte skickas-->
         @csrf <!--står för cross-site rquest forgery-->
         <div class="form-group">
             <label for="title">Project Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Project Title">
+            <input type="text" name="title" class="form-control" placeholder="Project Title" required value="{{ old('title') }}">
         </div>
         <div class="form-group">
             <label for="description">Project Description</label>
-            <input type="text" name="description" class="form-control" placeholder="Project Description">
+            <input type="text" name="description" class="form-control" placeholder="Project Description" required value = "{{ old('description') }}">
         </div>
         <div class="mt-3">
             <input  type="submit" value="Create New Project" class="btn btn-primary">
         </form>
+
         </div>
 
     <a href="/projects">&laquo; Back to all projects</a>
