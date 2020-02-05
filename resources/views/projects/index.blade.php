@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container mt-3">
-    @include('partials/status');
+    @include('partials/status')
     <h1>All Projects</h1>
 
     <ol>

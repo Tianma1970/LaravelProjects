@@ -15,9 +15,30 @@
                 @foreach( $todos as $todo )
                     <li>{{ $todo->title }}<br>
                         {{ $todo->description }}
+                        @if($todo->completed)
+                            <br>Great job!👍
+                        @else
+                            <br>Complete me🧐
+                        @endif
+                        <form method="POST" action="/projects/{{ $project->id }}/todos/{{ $todo->id }}">
+                            @csrf
+                            @method('PUT')
+
+                            <input type="checkbox" name="completed" value="1" onclick="this.form.submit();"
+                                @if($todo->completed)
+                                    checked
+                                @endif
+                            >&nbsp; checked
+                        </form>
+
                     </li>
                 @endforeach
             </ol>
+
+            <div class="d-flex">
+                <a href="/projects/{{ $project->id }}/todos/create" class="btn btn-success">Add a new Todo</a>
+
+            </div>
         </div>
     </div>
     <div>
