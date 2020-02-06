@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/projects', 'ProjectController');
     Route::resource('/projects/{project}/todos', 'TodoController');
     Route::get('/dashboard', 'DashboardController@index');
+    Route::post('/projects/{project}/todos/{todo}/check', 'TodoController@check');
 
 });
 
