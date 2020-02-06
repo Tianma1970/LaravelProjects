@@ -6,6 +6,9 @@
 
     <h1>Create a new Todo </h1>
 
+    @include('partials/error')
+    @include('partials/status')
+
     <form method="POST" action="/projects/{{ $project->id }}/todos">
 
 
@@ -13,11 +16,11 @@
         @csrf <!--står för cross-site rquest forgery-->
         <div class="form-group">
             <label for="title">Todo Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Todo Title">
+            <input type="text" name="title" class="form-control" placeholder="Todo Title" required value="{{ old('title') }}">
         </div>
         <div class="form-group">
             <label for="description">Todo Description</label>
-            <input type="text" name="description" class="form-control" placeholder="Todo Description">
+            <input type="text" name="description" class="form-control" placeholder="Todo Description" required value="{{ old('description') }}">
         </div>
         <div class="mt-3">
             <input  type="submit" value="Create New Todo" class="btn btn-primary">

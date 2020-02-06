@@ -13,6 +13,12 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $validationRules = [
+        'title'         => 'required|min:3',
+        'description'   => 'required|min:15'
+    ];
+
     public function index()
     {
         //
@@ -36,9 +42,10 @@ class TodoController extends Controller
      */
     public function store(Project $project, Request $request)
     {
+        $validated = $request->validate($this->validationRules);
         $todo = Todo::create([
-            'title'         => $request->input('title'),
-            'description'   => $request->input('description'),
+            'title'         => $validated('title'),
+            'description'   => $validated('description'),
             'project_id'    => $project->id,
         ]);
 
