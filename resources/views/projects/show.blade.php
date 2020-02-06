@@ -20,9 +20,8 @@
                         @else
                             <br>Complete me🧐
                         @endif
-                        <form method="POST" action="/projects/{{ $project->id }}/todos/{{ $todo->id }}">
+                        <form method="POST" action="/projects/{{ $project->id }}/todos/{{ $todo->id }}/check">
                             @csrf
-                            @method('PUT')
 
                             <input type="checkbox" name="completed" value="1" onclick="this.form.submit();"
                                 @if($todo->completed)
@@ -32,7 +31,7 @@
                         </form>
                         <form class="mt-3" method="POST" action="/projects/{{ $project->id }}/todos/{{ $todo->id }}">
                         @csrf
-                         <input type="submit" value="Edit Todo" class="btn btn-info">
+                         <a href="/projects/{{ $project->id }}/todos/{{ $todo->id }}/edit" class="btn btn-info">Edit Todo</a>
                         @method("DELETE")
                         <input type="submit" value="Delete Todo" class="btn btn-danger"><br><hr>
         </form>

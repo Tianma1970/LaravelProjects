@@ -86,7 +86,15 @@ class TodoController extends Controller
      */
     public function update(Request $request, Project $project, Todo $todo)
     {
+
+        $validated = $request->validate($this->validationRules);
+        $todo->title = $validated['title'];
+        $todo->description = $validated['description'];
+        $todo->save();
+
         $todo->complete($request->has('completed'));
+        //dd($todo);
+        //exit;
 
         return redirect('/projects/' . $project->id);
     }
@@ -101,6 +109,12 @@ class TodoController extends Controller
     {
         $todo->delete();
 
-        return redirect('/projects')->with('status', 'Todo deleted successfully');
+        return redirect('/projects/' . $project->id)->with('status', 'Todo deleted successfully');
+    }
+
+    public function check(Request $request, Project $project, Todo $todo) {
+        $todo->complete($request->has('completed'));
+
+        return redirect('/projects/' . $project->id);
     }
 }
