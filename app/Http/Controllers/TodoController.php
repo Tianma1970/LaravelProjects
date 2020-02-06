@@ -49,7 +49,7 @@ class TodoController extends Controller
             'project_id'    => $project->id,
         ]);
 
-        return redirect('/projects/' . $project->id);
+        return redirect('/projects/' . $project->id)->with('status', 'Todo created successfully');
     }
 
     /**
@@ -69,9 +69,12 @@ class TodoController extends Controller
      * @param  \App\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Todo $todo)
+    public function edit(Project $project, Todo $todo)
     {
-
+        return view('projects/todos/edit', [
+            'project' => $project,
+            'todo'    => $todo
+            ]);
     }
 
     /**
@@ -94,8 +97,10 @@ class TodoController extends Controller
      * @param  \App\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Todo $todo)
+    public function destroy(Project $project, Todo $todo)
     {
+        $todo->delete();
 
+        return redirect('/projects')->with('status', 'Todo deleted successfully');
     }
 }

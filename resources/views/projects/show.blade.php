@@ -16,7 +16,7 @@
                     <li>{{ $todo->title }}<br>
                         {{ $todo->description }}
                         @if($todo->completed)
-                            <br>Great job!👍
+                            <br> Great job!👍
                         @else
                             <br>Complete me🧐
                         @endif
@@ -30,6 +30,12 @@
                                 @endif
                             >&nbsp; checked
                         </form>
+                        <form class="mt-3" method="POST" action="/projects/{{ $project->id }}/todos/{{ $todo->id }}">
+                        @csrf
+                         <input type="submit" value="Edit Todo" class="btn btn-info">
+                        @method("DELETE")
+                        <input type="submit" value="Delete Todo" class="btn btn-danger"><br><hr>
+        </form>
 
                     </li>
                 @endforeach
