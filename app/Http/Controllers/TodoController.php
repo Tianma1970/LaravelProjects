@@ -44,8 +44,8 @@ class TodoController extends Controller
     {
         $validated = $request->validate($this->validationRules);
         $todo = Todo::create([
-            'title'         => $validated('title'),
-            'description'   => $validated('description'),
+            'title'         => $validated['title'],
+            'description'   => $validated['description'],
             'project_id'    => $project->id,
         ]);
 
